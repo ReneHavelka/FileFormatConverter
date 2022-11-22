@@ -2,8 +2,13 @@
 
 Ako IDE som použil Visual Studio.
 
-1.	Architektúra. Riešenie pozostáva z piatich projektov (vrstiev):
-1.1.	Domain
+Architektúra. Riešenie pozostáva z piatich projektov (vrstiev):
+1. Domain
+2. Application
+3. Infrastructure
+4. WebUI
+5. FileFormatConverterTests – pre testovanie pomocou nástrojov MSTest
+
 Tento projekt v priečinku Common má zadefinovaný interface IConversionMethod, ktorý „kontrahuje“ metódu pre konverziu formátov a je implementovaný v príslušných triedach (napr. JsonToXML).
 V Entities je definovaný model v triede Conversion s vlastnosťami FromFormat, ToFormat a ConversionMethod, a konštruktor pre inicializáciu vlastností. 
 1.2.	Application
