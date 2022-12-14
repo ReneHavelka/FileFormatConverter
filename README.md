@@ -23,4 +23,5 @@ V väčšine tried, kvôli prehľadnosti, je vhodný popis vysvetľujúci účel
 * manuálne – výhodne pomocou Swagger
 * automaticky – pomocou MSTest.
 
-Pred nasadením do produkčného prostredia treba ešte viacero vylepšení, napr. vylepšiť ošetrenie výnimiek, logging, bezpečnosť.
+Testovanie je len čiastočné.
+Celé riešenie by si vyžadovalo veľa refactoring-u, resp. najvhodnejšie by bolo zmeniť prístup k riešeniu na TDD.
