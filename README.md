@@ -1,9 +1,9 @@
 # File Format Converter
 
-Ako IDE som použil Visual Studio.
+Aplikácia je tvorené v IDE Visual Studio.
 
 ## Architektúra.
-Riešenie pozostáva z piatich projektov (vrstiev):
+Riešenie pozostáva z piatich projektov (4 vrstiev + testovanie):
 1. Domain
 2. Application
 3. Infrastructure
@@ -24,4 +24,4 @@ V väčšine tried, kvôli prehľadnosti, je vhodný popis vysvetľujúci účel
 * automaticky – pomocou MSTest.
 
 Testovanie je len čiastočné.
-Celé riešenie by si vyžadovalo veľa refactoring-u, resp. najvhodnejšie by bolo zmeniť prístup k riešeniu na TDD.
+Kvalita kódu v náväznosti na ďalšie nevyhnutné testovanie si bude vyžadovať neustály refactoring.
