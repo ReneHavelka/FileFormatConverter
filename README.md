@@ -11,7 +11,7 @@ Riešenie pozostáva z piatich projektov (4 vrstiev + testovanie):
 5. FileFormatConverterTests – pre testovanie pomocou nástrojov MSTest
 
 Snahou bolo dosiahnuť Clean Architecture design a čo najviac uplatniť princípy SOLID.
-V väčšine tried, kvôli prehľadnosti, je vhodný popis vysvetľujúci účel triedy, prípadne metódy.
+Vo väčšine tried, kvôli prehľadnosti, je vhodný popis vysvetľujúci účel triedy, prípadne metódy.
 
 ## Nainštalované balíky:
 1. Newtonsoft.Json a ProtoBuf-net – nástroje pre konvertovanie
