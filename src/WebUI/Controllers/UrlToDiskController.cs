@@ -47,7 +47,8 @@ namespace WebUI.Controllers
 			//var convertedFileBytes = getConversionAssignment.ConvertFormat(toConvertFile);
 
 			//Ulož na disk.
-			var fileNameToReturn = _saveFileToDisk.SaveFile(convertedFileBytes, toFileFormat);
+			Task<string> fileNameTask = _saveFileToDisk.SaveFileAsync(convertedFileBytes, toFileFormat);
+			var fileNameToReturn = await fileNameTask;
 
 			return Ok(fileNameToReturn);
 		}

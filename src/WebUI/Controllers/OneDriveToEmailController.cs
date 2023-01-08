@@ -47,7 +47,7 @@ namespace WebUI.Controllers
 			var convertedFileBytes = commonServices.GetFileBytes(resultUrl, fromFileFormat, toFileFormat);
 
 			//Ulož na disk.
-			var fileNameToReturn = _saveFileToDisk.SaveFile(convertedFileBytes, toFileFormat);
+			var fileNameToReturn = await _saveFileToDisk.SaveFileAsync(convertedFileBytes, toFileFormat);
 
 			var emailDetails = new EmailDetails(_configuration, _sendEmail);
 

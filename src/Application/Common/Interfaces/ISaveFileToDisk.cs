@@ -3,6 +3,6 @@
 	//Implementovaný vo vrstve Infrastrucure - uloženie konvertovaného súboru.
 	public interface ISaveFileToDisk
 	{
-		public string SaveFile(byte[] convertedFile, string fileExt);
+		public Task<string> SaveFileAsync(byte[] convertedFile, string fileExt);
 	}
 }

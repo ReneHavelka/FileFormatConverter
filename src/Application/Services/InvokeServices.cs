@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.Services
 {
-	//Volanie služieb v slede, ktorý spoločný pre všeky kontrolery.
+	//Volanie služieb v slede, ktorý je spoločný pre všeky kontrolery.
 	public class InvokeServices
 	{
 		ISourceFileToTemporaryFile _sourceFileToTemporaryFile;

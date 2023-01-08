@@ -24,4 +24,5 @@ Vo väčšine tried, kvôli prehľadnosti, je vhodný popis vysvetľujúci úče
 * automaticky – pomocou MSTest.
 
 Testovanie je len čiastočné.
-Kvalita kódu v náväznosti na ďalšie nevyhnutné testovanie si bude vyžadovať neustály refactoring.
+Kvalita kódu v nadväznosti na ďalšie nevyhnutné testovanie si bude samozrejme vyžadovať refactoring.
+Jeho súčasťou bude i modifikácia viacerých metód, ktoré budú zmenené zo synchrónnych na asynchrónne.
