@@ -11,14 +11,13 @@ namespace FileFormatConverterTests.WebUIIntegrationTests
 		string expected = @"C:\Users\Public\Documents\JSON.json";
 
 		[TestMethod]
-		public void UrlToDiskTestMethod()
+		public async Task UrlToDiskTestMethod()
 		{
 			var receivedFileToSave = new SourceFileToTemporaryFile();
 			var fileToConvert = new FileToConvert();
 			var saveFileToDisk = new SaveFileToDisk();
 
 			var tempFileName = TemporaryFileName.TemporFileName();
-			while (File.Exists(tempFileName)) { }
 
 			var urlToDiskController = new UrlToDiskController(receivedFileToSave, fileToConvert, saveFileToDisk);
 			var task = urlToDiskController.Post("https://www.w3schools.blog/wp-content/uploads/c90a6e5686968874bde232437df679e9_176458.xml", "xml", "json");

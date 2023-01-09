@@ -31,21 +31,6 @@ namespace WebUI.Controllers
 			var convertedFileBytesTask = commonServices.GetFileBytes(urlAddress, fromFileFormat, toFileFormat);
 			var convertedFileBytes = await convertedFileBytesTask;
 
-			////Vyber konverziu.
-			//var assignConversion = new AssignConversion();
-			//var getConversionAssignment = assignConversion.GetConversionAssignment(fromFileFormat, toFileFormat);
-
-			////Ulož do dočasného súboru.
-			//await _sourceFileToTemporaryFile.UrlFileToTemporaryFile(urlAddress);
-
-			////Načítaj dáta z dočasného súboru.
-			////ProtoBuf - načíta dáta zo súboru v objekte triedy pre konvertovanie (ProtoBufToJson).
-			//string toConvertFile = string.Empty;
-			//if (fromFileFormat.ToLower() != "protobuf") { toConvertFile = _fileToConvert.GetFileToConvert(); }
-
-			////Konvertuj.
-			//var convertedFileBytes = getConversionAssignment.ConvertFormat(toConvertFile);
-
 			//Ulož na disk.
 			Task<string> fileNameTask = _saveFileToDisk.SaveFileAsync(convertedFileBytes, toFileFormat);
 			var fileNameToReturn = await fileNameTask;
