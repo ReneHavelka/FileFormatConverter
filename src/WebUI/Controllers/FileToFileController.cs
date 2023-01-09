@@ -19,12 +19,13 @@ namespace WebUI.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Post([FromForm] IFormFile receivedFile, [FromForm] string fromFileFormat, [FromForm] string toFileFormat)
+		public async Task<IActionResult> Post([FromForm] IFormFile receivedFile, [FromForm] string fromFileFormat, [FromForm] string toFileFormat)
 		{
 			//Služby - vyber konverziu, ulož do dočasného súboru pod novým menom (kvôli zlepšeniu bezpečnosti pred malware-om),
 			//načítaj dáta z dočasného súboru, konvertuj.
 			var commonServices = new InvokeServices(_sourceFileToTemporaryFile, _fileToConvert);
-			var convertedFileBytes = commonServices.GetFileBytes(receivedFile, fromFileFormat, toFileFormat);
+			Task<byte[]> convertedFileBytesTask = commonServices.GetFileBytes(receivedFile, fromFileFormat, toFileFormat);
+			var convertedFileBytes = await convertedFileBytesTask;
 
 			var contentType = $"application/{toFileFormat}";
 			var file = File(convertedFileBytes, contentType);

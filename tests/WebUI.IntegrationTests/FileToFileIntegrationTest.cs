@@ -44,7 +44,7 @@ namespace FileFormatConverterTests.WebUIIntegrationTests
 }";
 
 		[TestMethod]
-		public void FileToFileTestMethod()
+		public async Task FileToFileTestMethod()
 		{
 			var content = xml;
 			var fileName = "Test.xml";
@@ -60,7 +60,8 @@ namespace FileFormatConverterTests.WebUIIntegrationTests
 			var fileToConvert = new FileToConvert();
 
 			var fileToFileController = new FileToFileController(receivedFileToSave, fileToConvert);
-			var okResult = fileToFileController.Post(file, "XmL", "jSON");
+			var okResultTask = fileToFileController.Post(file, "XmL", "jSON");
+			var okResult = await okResultTask;
 
 			var okObjectResult = okResult as OkObjectResult;
 			var fileContentResult = okObjectResult.Value as FileContentResult;

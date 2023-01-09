@@ -6,7 +6,7 @@ namespace FileFormatConverterTests.ApplicationUnitTests
 	public class AssignConversionUnitTest
 	{
 		[TestMethod]
-		public void AssignConversionTestMethod()
+		public async Task AssignConversionTestMethod()
 		{
 			var fromFileFormat = "xMl";
 			var toFileFormat = "jSon";

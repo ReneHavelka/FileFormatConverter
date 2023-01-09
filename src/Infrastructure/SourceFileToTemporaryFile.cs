@@ -12,7 +12,7 @@ namespace Infrastructure
 
 		public SourceFileToTemporaryFile()
 		{
-			tempFileName = TemporaryFileName.TemporFileSave();
+			tempFileName = TemporaryFileName.TemporFileName();
 		}
 
 		public void FileToTemporaryFile(IFormFile receivedFile)

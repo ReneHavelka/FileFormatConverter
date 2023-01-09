@@ -17,7 +17,7 @@ namespace FileFormatConverterTests.WebUIIntegrationTests
 			var fileToConvert = new FileToConvert();
 			var saveFileToDisk = new SaveFileToDisk();
 
-			var tempFileName = TemporaryFileName.TemporFileSave();
+			var tempFileName = TemporaryFileName.TemporFileName();
 			while (File.Exists(tempFileName)) { }
 
 			var urlToDiskController = new UrlToDiskController(receivedFileToSave, fileToConvert, saveFileToDisk);

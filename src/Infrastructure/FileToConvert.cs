@@ -9,7 +9,7 @@ namespace Infrastructure
 			//Načítaj dáta z dočasného súboru a odovzdaj ich pre ďalšie spracovanie - konvertovanie.
 			//Konvertovanie z Protobuf - priamo z dočasného súboru
 			string fileToConvert = string.Empty;
-			var tempFileName = TemporaryFileName.TemporFileSave();
+			var tempFileName = TemporaryFileName.TemporFileName();
 
 			using (FileStream fileStream = new(tempFileName, FileMode.Open, FileAccess.Read))
 			{

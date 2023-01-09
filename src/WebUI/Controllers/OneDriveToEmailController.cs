@@ -44,7 +44,8 @@ namespace WebUI.Controllers
 			//Služby - vyber konverziu, ulož do dočasného súboru pod novým menom (kvôli zlepšeniu bezpečnosti pred malware-om),
 			//načítaj dáta z dočasného súboru, konvertuj.
 			var commonServices = new InvokeServices(_sourceFileToTemporaryFile, _fileToConvert);
-			var convertedFileBytes = commonServices.GetFileBytes(resultUrl, fromFileFormat, toFileFormat);
+			var convertedFileBytesTask = commonServices.GetFileBytes(resultUrl, fromFileFormat, toFileFormat);
+			var convertedFileBytes = await convertedFileBytesTask;
 
 			//Ulož na disk.
 			var fileNameToReturn = await _saveFileToDisk.SaveFileAsync(convertedFileBytes, toFileFormat);
