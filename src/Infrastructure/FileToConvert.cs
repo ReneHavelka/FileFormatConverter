@@ -4,7 +4,7 @@ namespace Infrastructure
 {
 	public class FileToConvert : IFileToConvert
 	{
-		public string GetFileToConvert()
+		public async Task<string> GetFileToConvertAsync()
 		{
 			//Načítaj dáta z dočasného súboru a odovzdaj ich pre ďalšie spracovanie - konvertovanie.
 			//Konvertovanie z Protobuf - priamo z dočasného súboru
@@ -15,7 +15,7 @@ namespace Infrastructure
 			{
 				using (StreamReader reader = new StreamReader(fileStream))
 				{
-					fileToConvert = reader.ReadToEnd();
+					fileToConvert = await reader.ReadToEndAsync();
 				}
 			}
 

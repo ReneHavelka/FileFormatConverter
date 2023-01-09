@@ -8,7 +8,7 @@ namespace Infrastructure
 {
 	public class SendEmail : ISendEmail
 	{
-		public void DispatchEmail(EmailDataDto emailDataDto, EmailConnectionDataDto emailConnectionDataDto, string fileName)
+		public async Task DispatchEmail(EmailDataDto emailDataDto, EmailConnectionDataDto emailConnectionDataDto, string fileName)
 		{
 			var email = new MimeMessage();
 			email.From.Add(MailboxAddress.Parse(emailConnectionDataDto.UserName));
@@ -23,7 +23,8 @@ namespace Infrastructure
 			using var smtp = new SmtpClient();
 			smtp.Connect(emailConnectionDataDto.Host, 587, SecureSocketOptions.StartTls);
 			smtp.Authenticate(emailConnectionDataDto.UserName, emailConnectionDataDto.Password);
-			smtp.Send(email);
+			Task sendAsync = smtp.SendAsync(email);
+			await sendAsync;
 			smtp.Disconnect(true);
 		}
 	}

@@ -16,36 +16,39 @@ namespace Application.Services
 			_fileToConvert = fileToConvert;
 		}
 
-		public byte[] GetFileBytes(IFormFile receivedFile, string fromFileFormat, string toFileFormat)
+		public async Task<byte[]> GetFileBytes(IFormFile receivedFile, string fromFileFormat, string toFileFormat)
 		{
 			//Ulož do dočasného súboru.
 			_sourceFileToTemporaryFile.FileToTemporaryFile(receivedFile);
 
 			//Načítaj dáta z dočasného súboru, vyber a uskutočni konverziu.
-			var convertedFileBytes = Conversion(fromFileFormat, toFileFormat);
+			Task<byte[]> convertedFileBytesTask = Conversion(fromFileFormat, toFileFormat);
+			byte[] convertedFileBytes = await convertedFileBytesTask;
 
 			return convertedFileBytes;
 		}
 
-		public byte[] GetFileBytes(string urlLink, string fromFileFormat, string toFileFormat)
+		public async Task<byte[]> GetFileBytes(string urlLink, string fromFileFormat, string toFileFormat)
 		{
 			//Ulož do dočasného súboru.
 			_sourceFileToTemporaryFile.UrlFileToTemporaryFile(urlLink);
 
 			//Načítaj dáta z dočasného súboru, vyber a uskutočni konverziu.
-			var convertedFileBytes = Conversion(fromFileFormat, toFileFormat);
+			Task<byte[]> convertedFileBytesTask = Conversion(fromFileFormat, toFileFormat);
+			byte[] convertedFileBytes = await convertedFileBytesTask;
 
 			return convertedFileBytes;
 		}
 
-		private byte[] Conversion(string fromFileFormat, string toFileFormat)
+		private async Task<byte[]> Conversion(string fromFileFormat, string toFileFormat)
 		{
 			//Načítaj dáta z dočasného súboru.
 			//ProtoBuf - načíta dáta zo súboru v objekte triedy pre konvertovanie (ProtoBufToJson).
 			string toConvertFile = string.Empty;
 			if (fromFileFormat.ToLower() != "protobuf")
 			{ 
-				toConvertFile = _fileToConvert.GetFileToConvert(); 
+				Task<string> toConvertFileTask = _fileToConvert.GetFileToConvertAsync();
+				toConvertFile = await toConvertFileTask;
 			}
 			else
 			{

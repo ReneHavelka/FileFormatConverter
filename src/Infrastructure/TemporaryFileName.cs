@@ -2,7 +2,7 @@
 {
 	public static class TemporaryFileName
 	{
-		public static string TemporFileSave()
+		public static string TemporFileName()
 		{
 			//Meno a umiestnenie dočasného súboru.
 			string currentFolder = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);

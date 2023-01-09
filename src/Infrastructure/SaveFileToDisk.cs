@@ -6,11 +6,12 @@ namespace Infrastructure
 	{
 		public async Task<string> SaveFileAsync(byte[] convertedFile, string fileFormat)
 		{
-			var fileName = TemporaryFileName.TemporFileSave();
+			var fileName = TemporaryFileName.TemporFileName();
 			var fileExtension = fileFormat.ToLower();
 			if (fileExtension == "protobuf") { fileExtension = "bin"; }
 			fileName = fileName.Replace("Temp.tmp", $"{fileFormat.ToUpper()}.{fileExtension}");
-			await System.IO.File.WriteAllBytesAsync(fileName, convertedFile);
+			var saveFileToDiskTask = System.IO.File.WriteAllBytesAsync(fileName, convertedFile);
+			await saveFileToDiskTask;
 			return fileName;
 		}
 	}
